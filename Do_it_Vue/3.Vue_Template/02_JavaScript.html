@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascrip</title>
+</head>
+<body>
+    <div id = 'app'>
+        <p> {{ message }} </p>
+        <p> {{ message + "!!!" }} </p>
+        <p> {{ message.split("").reverse().join("") }} </p>
+
+        <!-- 
+        선언문은 사용 불가능
+        {{ var a = 10; }} 
+        분기 구문은 사용 불가능 
+        {{ if (ture) { return 100; } }}
+        삼항 연산자로 표현은 가능
+        {{ ture ? 100:0 }}
+
+        복잡한 연산은 인스턴스 안에서 수행
+        {{ message.split("").reverse().join("") }}
+        스크립트에서 computed 속성으로 계산후 최종값만 표현
+        {{ reversedMessage }} 
+        -->
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data: {
+                message: 'Hello?! Vue.js!'
+            },
+            computed: {
+                reversedMessage: function(){
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!-- 
+    뷰 템플릿에서도 자바스크립트 표현식을 쓸 수 있다. {{ }를 사용하면 된다! 
+ -->

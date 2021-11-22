@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>중첩 Router</title>
+    </head>
+    <body>
+        <div id="app">
+            <router-view></router-view>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
+        <script>
+            /* User 컴포넌트 정의 */
+            var User = {
+                template :`
+                    <div>
+                        User Component
+                        <router-view></router-view>
+                    </div>
+                `
+            }
+            /* 라우터 컴포넌트 정의 */
+            var UserProfile = { template : '<p>User Profile Component</p>'};
+            var UserPost = { template : '<p>User Post Component</p>'};
+            /* 라우터 정의 */
+            var routes = [
+                {
+                    path : '/user',
+                component : User,
+                children : [
+                    {
+                        path : 'posts',
+                        component : UserPost
+
+                    },
+                    {
+                        path : 'profile',
+                        component : UserProfile
+                    }
+                ]
+                }
+            ];
+            /* 라우터 선언 */
+            var router = new VueRouter({
+                routes
+            });
+
+            /* 뷰 인스턴스 생성 */
+            var app = new Vue({
+                router
+            }).$mount('#app');
+        </script>
+    </body>
+</html>
+<!-- 
+    네스티드 라우터 => 라우터로 페이지를 이동할 때 최소 2개 이상의 컴포넌트를 화면에 나타낼 수 있다. 
+        상위 컴포넌트 1개에 하위 컴포넌트1개를 포함하는 구조로 되어있다. 
+        (네스티드 라우터를 이용하면 URL에 따라서 컴포넌트의 하위 컴포넌트가 다르게 표시된다.)
+ -->

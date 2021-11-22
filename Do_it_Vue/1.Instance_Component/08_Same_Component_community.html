@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'app'>
+        {{ message }}<br>
+        <p>Toyama</p>
+        <Nayuki v-on:send = "wait"></Nayuki><br>
+        <p>Aoi</p>
+        <Dogashi v-on:arigato = "allow"></Dogashi><br>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+
+        var toyama = {
+            template: '<button v-on:click = "tegami"> Send Toyama no tegami </button>',
+            methods:{
+                tegami:function(){
+                    this.$emit('send');    
+                }
+            }
+        };
+
+        var aoi = {
+            template: '<button v-on:click = "anwser"> kanojyono ohenjiwa?! </button>',
+            methods:{
+                anwser:function(){
+                    this.$emit('arigato');
+                }
+            }
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data:{
+                message: "it's she lonely"
+
+            },
+            methods:{
+                wait: function(){
+                    alert("kotaeo matte iru");
+                },
+                allow: function(){
+                    alert("Arigato! Toyama!");
+                }
+            },
+            components:{
+                'Nayuki':toyama,
+                'Dogashi':aoi
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>
+<!-- 
+    이제는 같은 레벨의 컴포넌트 간 통신방법을 알아볼꺼다. 
+    같은 상위 컴포넌트를 가지는 2개의 하위 컴포넌트는 하위 -> 상위 -> 하위를 통해 통신해야한다. 
+    원칙적으로 같은 레벨의 컴포넌트 간의 통신은 불가능 하기에 이를 통해 같은 컴포넌트도 통신을 할 수 있는 원리를 재구성할 수 있다. 
+ -->

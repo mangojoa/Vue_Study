@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+</head>
+<body>
+    <div id = 'app'>
+        {{message}}
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        new Vue({ // 
+            el: '#app',
+            data:{ 
+                message:'Hello, Vue.js!'
+            },
+            // 뷰가 생성이 되는 과정에 따라 log가 출력되는 것을 console로 확인하는 과정
+            // 이는 Vue life cycle 를 볼 수 있다. 
+            beforeCreate : function(){
+                console.log("beforeCreate");
+            },
+            created : function(){
+                console.log("created");
+            },
+            mounted : function(){
+                console.log("mounted");
+                // 재할당의 개념이다. 
+                this.message = '?! what the hell ??? '
+            },
+            updated : function(){
+                console.log("updated");
+                // this.message = '?! what the hell ??? ' 로 인해 업데이트가 진행되기에 console에도 log가 출력이 된다. 
+            }
+        });
+    </script>    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'app'>
+        <child-component></child-component>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        // 이벤트 버스를 위한 추가 인스턴스 생성
+        var eventBus = new Vue();
+
+        Vue.component('child-component',{
+            template:'<div>하위 컴포넌트 영역입니다.<button v-on:click="showLog">show</button></div>',
+            // 이벤트를 보내는 컴포넌트 영역
+            methods:{
+                showLog: function(){
+                    eventBus.$emit('triggerEventBus',100);
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            created: function(){
+                eventBus.$on('triggerEventBus',function(value){
+                    console.log("이벤트를 전달 받았다!! 전달 받은 값은 : ", value);
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
+<!-- 
+    이벤트 버스란 무엇인가 !? 
+    하위 컴포넌트B 가 상위 컴포넌트A 에게 데이터를 전달하려면 멀리 돌아서 가야하는 구조가 발생한다.
+    이렇게 하면 활용성의 문제에 직면할 수 밖에 없고 효율성이 매우 저하된다. 그렇기에 
+    이벤트 버스를 이용해 상위 하위 컴포넌트 접근을 최소화(간소화)하는 방법이 있다. 
+
+    이벤트 버스를 위한 추가 인스턴스 생성
+    var eventBus = new Vue();
+
+    이벤트를 보내는 컴포넌트
+    methods: {
+        a01: function(){
+            eventBus.$emit('event_name',data);
+        }
+    }
+
+    이벤트를 받는 컴포넌트
+    methods: {
+        created: function(){
+            eventBus.$on('event_name',function(data){
+
+            });
+        }
+    } 
+-->

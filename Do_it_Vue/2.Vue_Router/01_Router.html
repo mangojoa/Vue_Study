@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router</title>
+</head>
+<body>
+    <div id = 'app'>
+        <h1> Vue Router Example </h1><br>
+        <p>
+            <!-- URL 값을 변경하는 태그 -->
+            <router-link to = "/Main">Main</router-link>
+            <router-link to = "/Login">Login</router-link>
+        </p>
+
+        <!-- 갱신된 URL에 해당하는 화면을 보여주는 영역 -->
+        <!-- <router-view>에 나타낼 화면은 <script>에서 정의 -->
+        <router-view></router-view>
+
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+
+    <!-- router CDN 추가 -->
+    <script src = 'https://unpkg.com/vue-router@3.0.1/dist/vue-router.js'></script>
+
+    <script>
+        // Main, Login 컴포넌트 정의 
+        var Main = {
+            template: '<div> Main </div>'
+        };
+        var Login = {
+            template: '<div> Login </div>'
+        };
+        
+        // 각 컴포넌트에 맞는 URL 지정
+        var routes = [
+            { pathd: '/Main', component: Main},
+            { path: '/Login', component: Login}  
+        ];
+
+        // Vue Router
+        var router = new VueRouter({
+            routes
+        });
+
+        // add Ruoter to Vue instance 
+        var app = new Vue({
+            mode:'history', // mode:history 를 입력하게 되면 라우터 URL의 해시 값(#)을 제거할 수 있다.!! 
+            router
+        }).$mount('#app');
+    </script>
+</body>
+</html>
+
+<!-- 
+    Vue Router => 뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리
+    이를 이용하여 뷰로 만든 페이지 간에 자유롭게 이동할 수 있다.
+
+    <router-link to = "URL value"></router-link>
+    페이지 이동 태그, 화면에서는 <a>로 표시되며 클립하면 to에 지정한 URL로 이동
+
+    <router-view></router-view>
+    페이지 표시 태그, 변경되는 URL에 따라 해당 컴포넌트를 뿌려주는 영역 
+
+    $mount() API란 ??
+    el 속성과 동일하게 인스턴스를 화면에 붙이는 역할을 한다. 
+    인스턴스를 생성할 때 el속성을 넣지 않았더라도 생성하고 나서 $mount()를 이용하면 강제로 인스턴스를 화면에 붙일 수가 있습니다. 
+    
+    참고로, 뷰 라우터의 공식 문서에는 $mount()를 권장 하고 있다. !!
+ -->

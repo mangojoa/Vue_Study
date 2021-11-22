@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+</head>
+<body>
+    <div id = 'app'>
+        {{message}}
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        /*
+        기본적인 vue의 선언단계(인스턴스 라고 부르기도 한다.)
+        객체의 메세지 property를 화면에 출력! 
+        Property => date 안에 선언된 message 값을 의미한다. 
+        */
+        new Vue({ // 
+            el: '#app', // 뷰 인스턴스가 그려질 지점을 지정 (다르게 말하면 html의 어떤 태그에 넣을지 정의하는 부분)
+            // #app => DOM요소 중 app이라는 아이디를 가진 요소를 의미 (CSS의 선택자 개념과 유사)
+            data:{ // 인스턴스가 가진 요소
+                message:'Hello, Vue.js!'
+            },
+        });
+    </script>    
+</body>
+</html>
+<!-- 
+template => 화면에 표시할 HTML,CSS 등의 마크업 요소를 정의하는 속성
+            뷰의 데이터 및 시타 속성들도 함께 화면에 그릴 수 있다
+
+method =>   화면 로직 제어와 관계된 메서드를 정의하는 속성
+            마우스 클릭 이벤트 처리 와 같이 화면의 전반적인 이벤트와 화면 동작과 관련된 로직을 추가할 수 있다. 
+
+created =>  뷰 인스턴스가 생성되자마자 실행할 로직을 정의할 수 있는 속성
+
+ -->

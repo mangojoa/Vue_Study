@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C_P event</title>
+</head>
+<body>
+    <div id = 'app'>
+        <child-component v-on:show-log="printTest"></child-component>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        Vue.component('child-component',{
+            template: '<button v-on:click="showLog">show</button>',
+            // 호출한 이벤트는 하위 컴포넌트를 등록하는 태그에서 v-on으로 받는다. 
+            // 하위 컴포넌트에서 발생한 이벤트명을 v-on: 속성에 지정하고, 속겅의 값에 이벤트를 발생했을 때 
+            // 호출될 상위 컴포넌트의 메서드를 지정.
+            methods: {
+                showLog: function(){
+                    this.$emit('show-log'); 
+                    // $emit()를 호출하면 괄호 안에 정의된 이벤트가 발생한다. 
+                    // 일반적으로 $emit()을 호출하는 위치는 하위 컴포넌트의 특정 메서드 내부 (this => 하위 컴포넌트를 가리킨다.)
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello Vue! passed from Parent Component !!'
+            },
+            methods:{
+                printTest: function(){
+                    console.log('received an event');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- 
+    하.상 컴포넌트 이벤트 전달 통신
+    이벤트를 발생시켜 상위 컴포넌트에 신호를 보내는 방식이다. 
+    하위 컴포넌트에서 특정 이벤트가 발생하면 상위 컴포넌트에서 해당하는 이벤트를 수신하여 상위 컴토넌트의 메소드를 호출하는 것
+
+    이벤트 발생 
+    this.$emit('이벤트명');
+    $emit()를 이용한 이벤트 발생
+
+    이벤트 수신
+    <child-component v-on:이벤트명 = "상위 컴포넌트의 메서드명"></child-component>
+    v-on: 속성을 이용한 이벤트 수신
+ -->

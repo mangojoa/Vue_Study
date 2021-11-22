@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template_Tch</title>
+</head>
+<body>
+    <div id = 'app'>
+        {{ reversedMessage }} 
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message: 'hello Vue.js!'
+            }, 
+            computed: {
+                reversedMessage: function(){
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- 
+    computed => data 속성 값의 변화에 따라 자동으로 다시 연산한다는 점이다
+    그리고 나아가 캐싱이다. 캐싱은 동일한 연상을 반복해서 하지 않기 위해 연산의 결과값을 미리 저장하고 있다가
+    필요할 때 불러오는 동작이다.
+
+    reversedMessage 값을 한 번만 표현했지만 만약 화면의 여러 곳에 값을 표시해야 한다면 
+    computed 속성의 reversedMessage()가 미리 연산한 결과를 가지고 있다가 화면에 결과만 표시. 
+
+    computed & methods 의 차이 
+    computed 속성은 대상 데이터의 값이 변경되면 자동적으로 수행(능동적)
+    method 속성은 호출할 때만 해당 로직이 수행(수동적)
+ -->

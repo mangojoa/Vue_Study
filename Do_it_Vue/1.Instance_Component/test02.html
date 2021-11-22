@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'app'>
+        <child-component v-bind:childpropsdata = "message"></child-component><br>
+        
+        <friend-component v-bind:friendpropsdata = "anothermessage"></friend-component>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        Vue.component('child-component',{
+            props: ['childpropsdata'],
+            template: '<p>{{childpropsdata}}</p>' 
+        });
+
+        Vue.component('friend-component',{
+            props: ['friendpropsdata'],
+            template: '<p>{{friendpropsdata}}</p>' 
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'd',
+                anothermessage: 'b'
+                
+            }
+        });
+    </script>
+</body>
+</html>

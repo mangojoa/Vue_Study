@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Axios</title>
+</head>
+<body>
+    <div id = 'app'>
+        <button v-on:click = "getData"> Get Framework list </button>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <!-- Axios CDN -->
+    <script src = 'https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script>
+        new Vue({
+            el: '#app',
+            methods:{ 
+                getData: function(){
+                    // axios get API 요청 
+                    axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                    .then(function(response){
+                        console.log(response)
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- 
+    Axios는 현태 뷰 커뮤니티에서 가장 많이 사용되는 HTTP통신 라이브러리
+    promise 기반의 API형식이 다양하게 제공되어 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현
+
+    Promise => 서버에 데이터를 요청하여 받아오는 동작과 같은 비동기 로직 처리에 유용한 자바스크립트 객체 
+    데이터를 요청하고 받아올때까지 기다렸다가 화면에 나타내는 로직을 실행해야 할 때 주고 활용
+    데이터를 받아왔을 때 promise로 데이터를 화면데 표시하거나 연산을 수행하는 등 특정 로직을 수행
+
+    HTTP 요청
+    axios.get('URL').then(성공로직).catch(실패로직);
+
+    HTTP POST 요청
+    axios.post('URL').then().catch();
+
+    HTTP 요청에 대한 옵션 속성 정의
+    axios({
+        methods:'get',
+        url:'URL 주소',
+        ...
+    });
+
+ -->

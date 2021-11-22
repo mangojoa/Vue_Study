@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Binding</title>
+</head>
+<body>
+    <div id = "app">
+        <p v-bind:id = 'idA'> ID Binding </p>
+        <p v-bind:class = "classA"> Class Binding </p>
+        <p v-bind:style = "styleA"> Style Binding </p>
+    </div>
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                idA: 10,
+                classA: 'container',
+                styleA: 'color: blue'
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- 
+    Data Binding => html 화면 요소를 뷰 인스턴스의 데이터와 연결하는 것을 의미 
+    {{ }} 문법과 v-bind 속성이 대표적이다.
+
+    1. {{ }} => 템플릿 문법 (이는 앞에서 다루었기에 여기서는 생략)
+    뷰 인스턴스의 데이터를 gtml 태그에 연셜하는 가장 기본적인 텍스트 삽입 방식
+
+    뷰는 반응성에 의해 화면이 자동으로 갱신되는 구조이다. 
+    만약 뷰 데이터가 변경되어도 값을 바꾸고 싶지 않다면 v-ones 속성을 사용
+
+    2. v-binding => html 속성 값에 뷰 데이터 값을 연결할 때 사용하는 데이터 연결 방식입니다. 
+    형식은 v-bind 속성으로 지정할 html 속성 or props 속성 앞에 접두사로 붙여줍니다. 
+
+    additionally, v-bind: 문법을 :로 간소화할 수 있습니다. 
+ -->

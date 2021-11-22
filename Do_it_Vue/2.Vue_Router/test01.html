@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <div id = "app">
+        <router-view name = "header"></router-view>
+        <router-view></router-view>
+        <router-view name = "footer"></router-view>
+    </div>
+
+    <script src = 'https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js'></script>
+    <script src = 'https://unpkg.com/vue-router@3.0.1/dist/vue-router.js'></script>
+    <script>
+        let Boby = {template:'<div>This is Body</div>'};
+        let Header = {template:'<div>This is Header</div>'};
+        let Footer = {template:'<div>This is Footer</div>'};
+
+        let LoginBoby = {template:'<div>This is LoginBody</div>'};
+        let LoginHeader = {template:'<div>This is LoginHeader</div>'};
+        let LoginFooter = {template:'<div>This is LoginFooter</div>'};
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path :'/',
+                    components:{
+                        default:Boby,
+                        header:Header,
+                        footer:Footer
+                    }
+                },
+                {
+                    path :'/login',
+                    components:{
+                        default:LoginBoby,
+                        header:LoginHeader,
+                        footer:LoginFooter
+                    }
+                }
+            ]
+        })
+
+        let app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>
+<!-- 
+    네임드 뷰는 특정 페이지로 이동했을 때 여러 대의 컴포넌트를 동시에 표시하는 라우팅 방식이다. 
+    네스티드 라우터는 상위 컴포넌트가 하위 컴포넌트를 포함하는 형식이지만 
+    네임드 뷰는 같은 레벨에서 여러 개의 컴포넌트를 한 번에 표시한다. 
+ -->

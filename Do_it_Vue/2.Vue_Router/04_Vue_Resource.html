@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue resource</title>
+</head>
+<body>
+    <div id = "app">
+        <button v-on:click = "getData"> Get Framework list </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <!-- Vue resource CDN URL -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            methods:{
+                getData: function(){
+                    this.$http.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                    .then(function(response){
+                        console.log(response);
+                        console.log(JSON.parse(response.data));
+                    });
+                }
+            } 
+        });
+    </script>
+</body>
+</html>
+<!-- 
+    뷰 리소스는 2016년 이후로 사용하지 않는 라이브러리지만 간단한 사용법을 익히고 넘어가보록 하자. 
+
+    this.$http.get(URL) 부분에서 then(성공) 이라면 그 값을 콘솔창에 띄우는 역할을 하는 JSON 형태를 띄우고 있다. 
+ -->
