@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import DataBinding from '../views/Watch.vue'
+// 새롭게 라우팅을 추가하기 전에 꼭 import를 시행해라 ... 에러난다 ...
 
 const routes = [
   {
@@ -14,6 +16,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/databinding',
+    name: 'DataBinding',
+    component: DataBinding
+    // 새롭게 추가된 컴포넌트의 라우팅을 설정
   }
 ]
 
