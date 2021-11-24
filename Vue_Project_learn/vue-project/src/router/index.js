@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 // import DataBinding from '../views/DataBindingList.vue'
-import DataBinding from '../views/NestedComponent.vue'
+import DataBinding from '../views/ParentComponent2.vue'
 // 새롭게 라우팅을 추가하기 전에 꼭 import를 시행해라 ... 에러난다 ...
 
 const routes = [
