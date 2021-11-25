@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <div> jquery ajax </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" 
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <script>
+
+        /*
+        Promise란?
+        해당 함수/기능이 성공한다면 promise() 함수를 실행해라.
+        */
+        function callAjax() {
+            return new Promise(function(resolve, reject) {
+                $.ajax({
+                    url:'https://api.hnpwa.com/v0/news/1.json',
+                    success: function(data) {
+                        resolve(data);
+                    }
+                });
+            });
+        }
+        /*
+        callback ?? 콜백함수란 ? 
+        특정 함수/기능이 종료됨과 동시에 실행되는 함수를 말한다.
+
+        이게 어떻게 가능한가?? js는 함수를 인자값으로 넘기는 것이 가능하기 때문이다.
+        */
+        function fetchData() {
+            var result = [];
+
+            callAjax()
+                .then(function() {
+                    console.log('데이터 호출 결과', data);
+                    result = data;
+                    console.log('함수 결과', result);
+                })
+            // $.ajax({
+            //     url: 'https://api.hnpwa.com/v0/news/1.json',
+            //     success: function(data) {
+                    // console.log('데이터 호출 결과', data);
+                    // result = data;
+                    // console.log('함수 결과', result);
+            //     }
+            // });
+
+            // console.log('함수 결과', result);
+        }
+        fetchData();
+    </script>
+
+</body>
+</html>

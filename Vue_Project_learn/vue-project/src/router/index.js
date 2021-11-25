@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-// import DataBinding from '../views/DataBindingList.vue'
+// import DataBinding from '../views/Mixin/Mixin.vue'
 import DataBinding from '../views/props/ParentComponent4.vue'
 // 새롭게 라우팅을 추가하기 전에 꼭 import를 시행해라 ... 에러난다 ...
 
