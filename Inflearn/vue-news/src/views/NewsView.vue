@@ -12,15 +12,20 @@ export default {
       users: []
     };
   },
+  /*
+  component에서 Vuex를 불러오기 위해서는 dispatch 
+  */
   created() {
-    var vm = this;
+      this.$store.dispatcd('FETCH_')
+    /* Vuex를 통한 api 연결을 위해 주석처리 
     fetchNewsList()
       .then( res => {
-        vm.users = res.data;
+        this.users = res.data;
       })
       .catch( e => {
         console.log(e)
       })
+    */
   }
 }
 </script>

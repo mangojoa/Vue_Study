@@ -1,4 +1,4 @@
-# vue-project-manager
+# mini-project-shop
 
 ## Project setup
 ```
