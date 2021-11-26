@@ -13,4 +13,12 @@ export default {
             })).data;
         }
     }
+    /*
+    async / await 기본 문법
+
+    async function 함수명() {
+        await 비동기_처리_메서드_명();
+    }
+
+    */
 }
