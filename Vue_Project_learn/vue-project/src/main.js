@@ -30,3 +30,5 @@ app.directive('focus', {
         */
     }
 })
+
+window.Kakao.init("1211652984bd8de996314defb93eb98f"); // kakao javaScript 앱 키를 등록
