@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :key="i" v-for="(user, i) in fetchedAsk">{{ user.title }}</div>
+    <div :key="i" v-for="(user, i) in askItems">{{ user.title }}</div>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   computed: {
     // #3
     ...mapGetters({
-      fetchedAsk: 'fetchedAsk'
+      askItems: 'fetchedAsk'
     })
 
     // #2
