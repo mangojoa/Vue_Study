@@ -10,8 +10,13 @@ export const store = new Vuex.Store({
         jobs: [],
         ask: []
     },
+    /*
+    computed 와 동일한 속성을 가졌으나 vuex에 존재한다는 것만 다를 뿐이다.
+    */
     getters: {
-
+        fetchedAsk(state) {
+            return state.ask;
+        }
     },
     mutations: { 
         /* 
@@ -53,19 +58,24 @@ export const store = new Vuex.Store({
                     console.log(e);
                 })
         },
-        FETCH_ASK(context) {
+        FETCH_ASK({ commit }) {
             fetchAskList()
-                .then(res => {
-                    context.commit('SET_ASK', res.data);
+                .then(({ data }) => {
+                    commit('SET_ASK', data);
                 })
                 .catch(e => {
                     console.log(e);
                 })
         },
-        FETCH_JOBS(context) {
-            fetchJobsList() 
-                .then(res => {
-                    context.commit('SET_JOBS', res.data);
+        // commit도 이러한 방식으로 사용할 수 있다.
+        FETCH_JOBS({ commit }) {
+            fetchJobsList()
+                /*
+                distructuring ({ 인자값 }) => response로 작성하는 구문 대신 
+                바로 데이터에 접근하는 방식이다.
+                */
+                .then(({ data }) => {
+                    commit('SET_JOBS', data);
                 })
                 .catch(e => {
                     console.log(e);
