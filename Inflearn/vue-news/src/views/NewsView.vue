@@ -1,22 +1,20 @@
 <template>
   <div>
-    <div :key="i" v-for="(user, i) in users"> {{ user.title }}</div>
+    <div :key="i" v-for="(user, i) in this.$store.state.news"> {{ user.title }}</div>
   </div>
 </template>
 
 <script>
-import {fetchNewsList} from '../API/index.js'
+// import {fetchNewsList} from '../API/index.js'
 export default {
-  data() {
-    return {
-      users: []
-    };
-  },
   /*
-  component에서 Vuex를 불러오기 위해서는 dispatch 
+  component에서 Vuex를 불러오기 위해서는 dispatch를 사용한다.
   */
   created() {
-      this.$store.dispatcd('FETCH_')
+      this.$store.dispatch('FETCH_NEWS'); 
+      // dispatch를 하는 순간 dispatch로 제어권이 넘어가게 된다.
+
+
     /* Vuex를 통한 api 연결을 위해 주석처리 
     fetchNewsList()
       .then( res => {
