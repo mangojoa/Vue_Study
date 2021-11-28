@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
         news: [],
         jobs: [],
         ask: [],
-        user: {}
+        user: {},
+        item: {}
     },
     /*
     computed 와 동일한 속성을 가졌으나 vuex에 존재한다는 것만 다를 뿐이다.
