@@ -1,3 +1,5 @@
+import {fetchNewsList, fetchAskList, fetchJobsList} from '../API/index.js'
+
 export default {
         /*
             그렇다면 actions에서 불러온 데이터를 어떻게 mutations를 거쳐 state에 담는가?
