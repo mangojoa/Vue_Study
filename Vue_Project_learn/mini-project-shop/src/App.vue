@@ -1,10 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <header />
+    <router-view/>
+    <footer />
   </div>
-  <router-view/>
 </template>
+<script>
+  import Header from '../src/layouts/Header.vue';
+  import Footer from '../src/layouts/Footer.vue';
+  export default {
+    components: {
+      Header, Footer  
+    },
+    computed: {
+      user() {
+        return this.$store.state.user;
+      }
+    }
+  }
+</script>
+
 
 <style>
 #app {
