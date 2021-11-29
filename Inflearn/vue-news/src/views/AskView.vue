@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ul class="ask-list">
+    <list-item></list-item>
+    <!-- <ul class="ask-list">
       <li :key="i" v-for="(item, i) in askItems" class="post">
         <div class="points">
           {{ item.points }}
@@ -19,66 +20,47 @@
           </small>
         </div>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
 // import { fetchAskList } from '../API/index.js'
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
+import ListItem from '../components/ListItem.vue';
 export default {
+  components: {
+    ListItem,
+  }
+  /*
   computed: {
-    // #3
+    #3
     ...mapGetters({
       askItems: 'fetchedAsk'
     })
 
-    // #2
-    // ...mapState({
-    //   ask: state => state.ask
-    // }),
+    #2
+    ...mapState({
+      ask: state => state.ask
+    }),
 
-    // #1
-    // ask() {
-    //   return this.$store.state.ask;
-    // }
+    #1
+    ask() {
+      return this.$store.state.ask;
+    }
   },
   created() {
       this.$store.dispatch('FETCH_ASK');
-    // fetchAskList()
-    //   .then( res => {
-    //     this.ask = res.data;
-    //     console.log(res)
-    //   })
-    //   .catch( e => {
-    //     console.log(e)
-    //   })
-  }
+    }
+
+    fetchAskList()
+      .then( res => {
+        this.ask = res.data;
+        console.log(res)
+      })
+      .catch( e => {
+        console.log(e)
+      })
+  */
 }
 </script>
-<style scoped>
-.ask-list {
-  margin: 0;
-  padding: 0;
-}
-.post {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-}
-.points {
-  width: 80px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #42b883;
-}
-.ask-title {
-  margin: 0;
-}
-.link-text {
-  color: #828282;
-}
-</style>

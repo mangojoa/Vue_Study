@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ul class="jobs-list">
+    <list-item></list-item>
+    <!-- <ul class="jobs-list">
       <li :key="i" v-for="(item, i) in this.$store.state.jobs" class="post">
         <div class="points">
           {{ item.type }}
@@ -16,23 +17,30 @@
           </small>
         </div>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
 // import {fetchJobsList} from '../API/index.js'
+import ListItem from '../components/ListItem.vue';
 export default {
-  created() {
-      this.$store.dispatch('FETCH_JOBS');
-    // fetchJobsList()
-    //   .then(res => {
-    //     this.jobs = res.data;
-    //   })
-    //   .catch(e => {
-    //     console.log(e)
-    //   })
+  components: {
+    ListItem,
   }
+  /*
+  created() {
+    this.$store.dispatch('FETCH_JOBS');
+
+    fetchJobsList()
+      .then(res => {
+        this.jobs = res.data;
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
+  */
 }
 </script>
 

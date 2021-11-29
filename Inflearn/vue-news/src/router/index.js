@@ -17,14 +17,18 @@ export const router = new VueRouter({
         },
         {
             path: '/news',
+            // ListItem 분기 처리를 위해서 각 path에 name 속성을 추가 하였다. 
+            name: 'news',
             component: NewsView
         },
         {
             path: '/ask',
+            name: 'ask',
             component: AskView
         },
         {
             path: '/jobs',
+            name: 'jobs',
             component: JobsView
         },
         {
