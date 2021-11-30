@@ -1,23 +1,6 @@
 <template>
   <div>
     <list-item></list-item>
-    <!-- <ul class="jobs-list">
-      <li :key="i" v-for="(item, i) in this.$store.state.jobs" class="post">
-        <div class="points">
-          {{ item.type }}
-        </div>
-        <div>
-          <p class="jobs-title">
-            <a v-bind:href="item.url">
-              {{ item.title }}
-            </a>
-          </p>
-          <small class="link-text">
-            {{ item.time_ago }}
-          </small>
-        </div>
-      </li>
-    </ul> -->
   </div>
 </template>
 

@@ -3,19 +3,33 @@
     <ul class="news-list">
       <li :key="i" v-for="(item, i) in listItems" class="post">
         <div class="points">
-          {{ item.points }}
+          {{ item.points || 0 }}
         </div>
         <div>
+          <!-- 타이틀 영역 -->
           <p class="news-title">
-            <a v-bind:href="item.url">
-              {{ item.title }}
-            </a>
+            <template v-if="item.domain">
+              <a v-bind:href="item.url">
+                {{ item.title }}
+              </a>
+            </template>
+            <template v-else>
+              <router-link :to="`item/${item.id}`">
+                {{ item.title }}
+              </router-link>
+            </template>
           </p>
           <small class="link-text">
-            {{ item.time_ago }} by 
-            <router-link v-bind:to="`/user/${item.user}`" class="link-text">
-              {{ item.user }}
-            </router-link>
+            {{ item.time_ago }} by
+              <router-link 
+              v-bind:to="`/user/${item.user}`"
+              v-if="item.user"
+              class="link-text" >
+                {{ item.user }}
+              </router-link>
+              <a :href="item.url" v-else>
+                {{ item.domain }}
+              </a>
           </small>
         </div>
       </li>
@@ -47,7 +61,7 @@ export default {
                 return this.$store.state.news;
             } else if (name === 'ask') {
                 return this.$store.state.ask;
-            } else {
+            } else if (name === 'jobs') {
                 return this.$store.state.jobs;
             }
         }
