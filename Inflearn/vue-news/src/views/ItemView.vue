@@ -1,39 +1,35 @@
 <template>
   <div>
     <section>
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-discription">
-          <router-link :to="`/user/${itemInfo.user}`">
-            {{ itemInfo.user }}
-          </router-link>
-          <div class="time">
-            {{ itemInfo.time_ago }}
-          </div>
-        </div>
-      </div>
-      <h2>Ask : {{ itemInfo.title }}</h2>
+      <user-profile :info="fetchedItem">
+        <router-link slot="username" :to="`/user/${fetchedItem.user}`">
+          {{ fetchedItem.user }}
+        </router-link>
+        <template slot="time"> {{ 'Posted ' + fetchedItem.time_ago }} </template>
+      </user-profile>
     </section>
+      <section>
+        <h2>Ask : {{ fetchedItem.title }}</h2>
+      </section>
     <section>
       <!-- 
         html tag 를 가지고 있는 데이터의 경우
         v-html 을 활용하자. 
        -->
-       <div v-html="itemInfo.content">
-         {{ itemInfo.content }}
-       </div>
+       <div v-html="fetchedItem.content"></div>
     </section>
   </div>
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue';
+import { mapGetters } from 'vuex';
 export default {
+  components: {
+     UserProfile,
+  },
   computed: {
-    itemInfo() {
-      return this.$store.state.item;
-    }
+    ...mapGetters(['fetchedItem']),
   },
   created() {
     const itemid = this.$route.params.id

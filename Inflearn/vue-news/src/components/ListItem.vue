@@ -43,7 +43,6 @@ export default {
     컴포넌트 공통화를 위해서는 dispatch의 분기처리가 필요하다. 
 
     그렇다면 그 분기처리의 기준점이 무엇인가? => 여기서는 router의 name 속성을 이용해보겠다. 
-    */
     created() {
         const name = this.$route.name;
         if (name === 'news') {
@@ -54,6 +53,7 @@ export default {
             this.$store.dispatch('FETCH_JOBS');
         }
     },
+    */
     computed: {
         listItems() {
             const name = this.$route.name;
