@@ -4,17 +4,15 @@
     <transition name="fade">
       <router-view></router-view>
     </transition>
+    <spinner :loading="true"></spinner>
   </div>
 </template>
 
 <script>
-import ToolBar from './components/ToolBar.vue'
+import ToolBar from './components/ToolBar.vue';
+import Spinner from './components/Spinner.vue';
 export default {
-  components: { ToolBar },
-  component: {
-    ToolBar
-  }
-
+  components: { ToolBar, Spinner },
 }
 </script>
 

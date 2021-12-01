@@ -6,11 +6,16 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
+import bus from '../utils/bus.js';
 export default {
   components: {
     ListItem,
   },
   created() {
+    /*
+    이벤트 버스 사용하기 
+    */
+    bus.$emit('start:spinner');
     this.$store.dispatch('FETCH_NEWS');
   }
 
