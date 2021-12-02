@@ -7,6 +7,7 @@
 <script>
 import ListItem from '../components/ListItem.vue';
 import bus from '../utils/bus.js';
+
 export default {
   components: {
     ListItem,
@@ -16,7 +17,16 @@ export default {
     이벤트 버스 사용하기 
     */
     bus.$emit('start:spinner');
-    this.$store.dispatch('FETCH_NEWS');
+    setTimeout(() => {
+      this.$store.dispatch('FETCH_NEWS')
+      .then(() => {
+        console.log('fetched');
+        bus.$emit('end:spinner');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }, 3000);
   }
 
   /*

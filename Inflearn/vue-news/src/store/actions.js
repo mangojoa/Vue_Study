@@ -14,6 +14,7 @@ export default {
                 fetchNewsList()
                     .then(res => {
                         context.commit('SET_NEWS', res.data);
+                        return res;
                         /*
                         원래대로라면 state.news에 담을 것이다. 
                         하지만 mutations 만이 state에 접근할 수 있다.
@@ -27,6 +28,7 @@ export default {
                 fetchAskList()
                     .then(({ data }) => {
                         commit('SET_ASK', data);
+                        return data;
                     })
                     .catch(e => {
                         console.log(e);
@@ -41,6 +43,7 @@ export default {
                     */
                     .then(({ data }) => {
                         commit('SET_JOBS', data);
+                        return data;
                     })
                     .catch(e => {
                         console.log(e);
