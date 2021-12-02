@@ -56,6 +56,11 @@ export default {
     */
     computed: {
         listItems() {
+          return this.$store.state.list;
+            /*
+            더이상 이렇게 분기 처리를 할 필요 없이 하이 오더 컴포넌트 구현(listview)을 통해
+            분기 처리를 할 수 있다. actions, mutations, createListView 등을 참조
+
             const name = this.$route.name;
             if (name === 'news') {
                 return this.$store.state.news;
@@ -64,6 +69,7 @@ export default {
             } else if (name === 'jobs') {
                 return this.$store.state.jobs;
             }
+            */
         }
     }
 }
