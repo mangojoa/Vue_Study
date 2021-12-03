@@ -12,7 +12,7 @@ export default function createListView(name) {
         여기서는 분기처리를 위한 코드이다.
         this.$store.dispatch('FETCH_LIST)
         */
-        name: 'HO Component',
+        name,
         created() {
             bus.$emit('start:spinner');
             // setTimeout(() => {

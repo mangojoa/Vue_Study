@@ -6,18 +6,19 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
-import bus from '../utils/bus.js';
+import ListMixin from '../mixins/ListMixin.js';
+// import bus from '../utils/bus.js';
 
 export default {
   components: {
     ListItem,
   },
+  mixins: [ListMixin],
+
+  /*
   created() {
-    /*
-    이벤트 버스 사용하기 
-    */
+    // 이벤트 버스 사용하기 
     bus.$emit('start:spinner');
-    setTimeout(() => {
       this.$store.dispatch('FETCH_NEWS')
       .then(() => {
         console.log('fetched');
@@ -26,8 +27,8 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    }, 3000);
   }
+  */
 
   /*
   component에서 Vuex를 불러오기 위해서는 dispatch를 사용한다.

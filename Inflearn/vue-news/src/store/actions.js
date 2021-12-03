@@ -17,7 +17,7 @@ export default {
             }) 이런 형식으로 지정된 mutations에 데이터를 넘길 수 있다. 
         */
             FETCH_NEWS(context) { // NewsView의 제어권이 여기로 넘어오게 된다.
-                fetchNewsList()
+                return fetchNewsList()
                     .then(res => {
                         context.commit('SET_NEWS', res.data);
                         return res;
@@ -31,7 +31,7 @@ export default {
                     })
             },
             FETCH_ASK({ commit }) {
-                fetchAskList()
+                return fetchAskList()
                     .then(({ data }) => {
                         commit('SET_ASK', data);
                         return data;
@@ -42,7 +42,7 @@ export default {
             },
             // commit도 이러한 방식으로 사용할 수 있다.
             FETCH_JOBS({ commit }) {
-                fetchJobsList()
+                return fetchJobsList()
                     /*
                     distructuring ({ 인자값 }) => response로 작성하는 구문 대신 
                     바로 데이터에 접근하는 방식이다.
@@ -56,7 +56,7 @@ export default {
                     })
             },
             FETCH_USER({ commit }, name) {
-                fetchUserInfo(name)
+                return fetchUserInfo(name)
                     .then(({ data }) => {
                         commit('SET_USER', data);
                     }) 
@@ -65,7 +65,7 @@ export default {
                     })
             },
             FETCH_ITEM({ commit }, itemid) {
-                fetchitemInfo(itemid)
+                return fetchitemInfo(itemid)
                     .then(({ data }) => {
                         commit('SET_ITEM', data);
                     })

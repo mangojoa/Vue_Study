@@ -7,11 +7,14 @@
 <script>
 // import {fetchJobsList} from '../API/index.js'
 import ListItem from '../components/ListItem.vue';
-import bus from '../utils/bus.js'
+import ListMixin from '../mixins/ListMixin.js'
+// import bus from '../utils/bus.js'
 export default {
   components: {
     ListItem,
   },
+  mixins: [ListMixin]
+  /*
   created() {
     bus.$emit('start:spinner');
     setTimeout(() => {
@@ -25,6 +28,7 @@ export default {
       });
     }, 3000);
   }
+  */
   /*
   created() {
     this.$store.dispatch('FETCH_JOBS');
