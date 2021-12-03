@@ -16,54 +16,88 @@ export default {
                 context.commit('mutations_Name', res.data); 
             }) 이런 형식으로 지정된 mutations에 데이터를 넘길 수 있다. 
         */
+
+        async FETCH_NEWS(context) {
+            const res = await fetchNewsList();
+            context.commit('SET_NEWS', res.data);
+            return res;
+        },
+        async FETCH_ASK({ commit }) {
+            const res = await fetchAskList();
+            commit('SET_ASK', res.data);
+            return res;
+        },
+        async FETCH_JOBS({ commit }) {
+            const res = await fetchJobsList();
+            commit('SET_JOBS', res.data);
+            return res;
+        },
+        async FETCH_USER({ commit }, name) {
+            const res = await fetchUserInfo(name);
+            commit('SET_USER', res.data);
+            return res;
+        },
+        async FETCH_ITEM({ commit }, itemid) {
+            const res  = await fetchitemInfo(itemid);
+            commit('SET_ITEM', res.data);
+            return res;
+        },
+        async FETCH_LIST({ commit }, pagename) {
+            const res = await fetchList(pagename);
+            commit('SET_LIST', res.data);
+            return res;
+        } 
+
+
+        /* promise 로 구현한 API 
             FETCH_NEWS(context) { // NewsView의 제어권이 여기로 넘어오게 된다.
                 return fetchNewsList()
-                    .then(res => {
-                        context.commit('SET_NEWS', res.data);
-                        return res;
-                        /*
-                        원래대로라면 state.news에 담을 것이다. 
-                        하지만 mutations 만이 state에 접근할 수 있다.
-                        */
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    })
-            },
+               .then(res => {
+                   context.commit('SET_NEWS', res.data);
+                   return res;
+                   
+                   원래대로라면 state.news에 담을 것이다. 
+                   하지만 mutations 만이 state에 접근할 수 있다.
+                   
+               })
+               .catch(e => {
+                   console.log(e);
+               })
+           },
             FETCH_ASK({ commit }) {
                 return fetchAskList()
-                    .then(({ data }) => {
-                        commit('SET_ASK', data);
-                        return data;
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    })
+                .then(({ data }) => {
+                    commit('SET_ASK', data);
+                    return data;
+                })
+                .catch(e => {
+                    console.log(e);
+                })
             },
-            // commit도 이러한 방식으로 사용할 수 있다.
+        // commit도 이러한 방식으로 사용할 수 있다.
             FETCH_JOBS({ commit }) {
                 return fetchJobsList()
-                    /*
-                    distructuring ({ 인자값 }) => response로 작성하는 구문 대신 
-                    바로 데이터에 접근하는 방식이다.
-                    */
-                    .then(({ data }) => {
-                        commit('SET_JOBS', data);
-                        return data;
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    })
+                        
+                distructuring ({ 인자값 }) => response로 작성하는 구문 대신 
+                바로 데이터에 접근하는 방식이다.
+                        
+                .then(({ data }) => {
+                    commit('SET_JOBS', data);
+                    return data;
+                })
+                .catch(e => {
+                    console.log(e);
+                })
             },
             FETCH_USER({ commit }, name) {
                 return fetchUserInfo(name)
                     .then(({ data }) => {
                         commit('SET_USER', data);
                     }) 
-                    .catch(e => {
-                        console.log(e);
-                    })
-            },
+                        .catch(e => {
+                            console.log(e);
+                        })
+                },
             FETCH_ITEM({ commit }, itemid) {
                 return fetchitemInfo(itemid)
                     .then(({ data }) => {
@@ -82,4 +116,5 @@ export default {
                     .catch(error => {console.log(error)
                     })
             }
+        */
 }
