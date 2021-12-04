@@ -1,5 +1,5 @@
 <template>
-    <canvas id="barChart" width="50" height="50"></canvas>
+    <canvas ref="barChart" id="barChart" width="50" height="50"></canvas>
 </template>
 
 <script>
@@ -8,8 +8,7 @@ import { Chart } from 'chart.js';
 export default {
     // mounted() 라이프 사이클 훅에서 차트를 그림
     mounted() {
-    const ctx = document.getElementById("barChart");
-    const barChart = new Chart(ctx, {
+    const barChart = new Chart(this.$refs.barChart, {
         type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
