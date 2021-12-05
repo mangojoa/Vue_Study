@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    name: 'header',
+    name: 'Header',
     computed: {
         user() {
             return this.$store.state.user;

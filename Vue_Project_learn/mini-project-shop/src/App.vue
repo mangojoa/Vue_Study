@@ -6,20 +6,19 @@
   </div>
 </template>
 <script>
-  import Header from '../src/layouts/Header.vue';
-  import Footer from '../src/layouts/Footer.vue';
-  export default {
-    components: {
-      Header, Footer  
-    },
-    computed: {
-      user() {
-        return this.$store.state.user;
-      }
+import { Header } from '../src/layouts/Header'
+import { Footer } from '../src/layouts/Footer'
+export default {
+  components: {
+    Header, Footer
+  },
+  computed: {
+    user() {
+    return this.$store.state.user
     }
   }
+}
 </script>
-
 
 <style>
 #app {
