@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { Chart } from 'chart.js';
+// import { Chart } from 'chart.js';
 
 export default {
     mounted() {
         var ctx = this.$refs.lineChart.getContext('2d');
-        var chart = new Chart(ctx, {
+        var chart = new this.$_Chart(ctx, {
             type: 'line',
             data: {
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
