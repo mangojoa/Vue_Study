@@ -1,20 +1,20 @@
 <template>
   <div>
-    <header></header>
-    <router-view />
-    <footer />
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 <script>
-import { Header } from '../src/layouts/Header'
-import { Footer } from '../src/layouts/Footer'
+import Header from './layouts/Header.vue'
+import Footer from './layouts/Footer.vue'
 export default {
   components: {
     Header, Footer
   },
   computed: {
     user() {
-    return this.$store.state.user
+      return this.$store.state.user
     }
   }
 }

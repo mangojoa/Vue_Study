@@ -16,5 +16,7 @@ module.exports = {
                 changeOrigin: true
             }
         }
-    }
+    },
+    // ESLint 설정 Off
+    lintOnSave: false
 }

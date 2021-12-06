@@ -28,12 +28,12 @@
                       </router-link>
                   </li>
                   <li v-if="user.email==undefined">
-                      <button class="btn btn-danger" type="button" @click="kakaoLogin">
+                      <button class="btn btn-danger" type="button" @click="kakaoLogin()">
                           Login
                       </button>
                   </li>
                   <li v-else>
-                      <button class="btn btn-danger" type="button" @click="kakaoLogout">
+                      <button class="btn btn-danger" type="button" @click="kakaoLogout()">
                           Logout
                       </button>
                   </li>
@@ -74,7 +74,7 @@ export default {
                 }
             });
         },
-        async lofin(kakao_account) {
+        async login(kakao_account) {
             await this.$api("/api/login", {
                 param: [
                     {
