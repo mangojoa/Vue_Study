@@ -13,4 +13,4 @@ app.use(store);
 app.use(VueSweetalert2);
 app.mount('#app');
 
-// createApp(App).use(store).use(router).mount('#app')
+window.Kakao.init("1211652984bd8de996314defb93eb98f"); // kakao javaScript 앱 키를 등록

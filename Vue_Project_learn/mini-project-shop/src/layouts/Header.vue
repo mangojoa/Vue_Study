@@ -18,12 +18,12 @@
                       </router-link>
                   </li>
                   <li class="nav-item">
-                      <router-link class="nav-link" to="/detail">
+                      <router-link class="nav-link active" to="/detail">
                           Product Details
                       </router-link>
                   </li>
                   <li v-if="user.email!=undefined" class="nav-item">
-                      <router-link clas="nav-link" to="/salex">
+                      <router-link clas="nav-link active" to="/sales">
                           Enroll Product Page
                       </router-link>
                   </li>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Header',
     computed: {
@@ -62,38 +63,44 @@ export default {
                 success: this.getProfile
             });
         },
-        getProfile(authObj) {
-            console.log(authObj);
+        getProfile() {
             window.Kakao.API.request({
                 url: '/v2/user/me',
                 success: res => {
                     const kakao_account = res.kakao_account;
                     console.log(kakao_account);
                     this.login(kakao_account);
-                    alert("로그인 성공");
+                },
+                fail: error => {
+                    console.log(error);
                 }
             });
         },
         async login(kakao_account) {
-            await this.$api("/api/login", {
-                param: [
-                    {
-                        email: kakao_account.email,
-                        nickname: kakao_account.profile.nickname
-                    },
-                    {
-                        nickname: kakao_account.profile.nickname
-                    }
-                ]
-            });
-
-            this.$store.commit("user", kakao_account);
+            try{
+                /*
+                $api('/api/login', {data}) 의 경우 database가 연동된 상태여야 한다.
+                await this.$api("/api/login", {
+                    param: [
+                        {
+                            email: kakao_account.email,
+                            nickname: kakao_account.profile.nickname
+                        },
+                        {
+                            nickname: kakao_account.profile.nickname
+                        }
+                    ]
+                });
+                */
+                this.$store.commit("user", kakao_account);
+            } catch(error) {
+                console.log(error);
+            }
         },
         kakaoLogout() {
             window.Kakao.Auth.logout((res) => {
                 console.log(res);
                 this.$store.commit("user", {});
-                alert("로그아웃");
                 this.$router.push({path:'/'});
             })
         }
