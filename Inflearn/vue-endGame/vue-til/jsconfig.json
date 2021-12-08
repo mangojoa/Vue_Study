@@ -1,17 +1,17 @@
 {
-    "compilerOptions": { 
-        "baseUrl": ".",
-        "paths": {
-            "~/*": [
-                "./*"
-            ],
-            "@/*": [
-                "./src/*"
-            ],
-        }
-    },
-    "exclude": [ // 컴파일에서 제외시킬 폴더들
-        "node_nodules",
-        "dist"
-    ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
