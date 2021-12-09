@@ -22,5 +22,10 @@ export default new VueRouter({
       path: '/signup',
       component: () => import('@/views/SignupPage.vue'),
     },
+    // 없는 페이지를 접근할 때의 라우터 처리
+    {
+      path: '*',
+      component: () => import('@/views/NotFoundPage.vue'),
+    },
   ],
 });
