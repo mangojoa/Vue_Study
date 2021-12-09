@@ -6,6 +6,11 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 export default new VueRouter({
+  mode: 'history',
+  /*
+  url의 /#/이 사라진다. /#/의 존재 여부에 따라 새로운 페이지임을 인식한다.
+  /#/의 존재한다면 새로운 페이지를 인식하지 못하기에 이를 제거하여 새로운 페이지 임을 인식하게 된다.
+  */
   routes: [
     {
       path: '/',
