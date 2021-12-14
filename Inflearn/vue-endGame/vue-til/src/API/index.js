@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '@/store/index';
+import store from '../store';
 import { setInterceptors } from './common/interceptors';
 
 /*
@@ -14,7 +14,7 @@ function createInstance() {
   const instance = axios.create({
     baseURL: process.env.VUE_APP_API_URL,
     headers: {
-      Authortization: store.state.token,
+      Authorization: store.state.token,
     },
   });
   return setInterceptors(instance);

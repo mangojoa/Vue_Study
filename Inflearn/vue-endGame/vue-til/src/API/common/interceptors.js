@@ -1,8 +1,11 @@
+import store from '@/store/index';
+
 export function setInterceptors(instance) {
   // 넘겨받은 instance를 axios대신에 사용한다.
   // Add a request interceptor
   instance.interceptors.request.use(
     function(config) {
+      config.headers.Authorization = store.state.token;
       return config;
     },
     function(error) {
