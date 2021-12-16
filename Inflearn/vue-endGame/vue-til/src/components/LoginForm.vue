@@ -3,7 +3,7 @@
     <div class="form-wrapper form-wrapper-sm">
       <form @submit.prevent="submitForm" class="form">
         <div>
-          <label for="username">ID:</label>
+          <label for="username">id:</label>
           <input id="username" type="text" v-model="username" />
           <p class="validation-text">
             <span class="warning" v-if="!isUsernameValid && username">
@@ -12,15 +12,15 @@
           </p>
         </div>
         <div>
-          <label for="password">PW:</label>
-          <input id="password" type="password" v-model="password" />
+          <label for="password">pw:</label>
+          <input id="password" type="text" v-model="password" />
         </div>
         <button
           :disabled="!isUsernameValid || !password"
           type="submit"
           class="btn"
         >
-          login
+          로그인
         </button>
       </form>
       <p class="log">{{ logMessage }}</p>
@@ -29,8 +29,9 @@
 </template>
 
 <script>
-import { loginUser } from '@/API/index';
+import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
+import { saveAuthToCookie, saveUserToCookie } from '@/utils/cookies';
 
 export default {
   data() {
@@ -56,9 +57,11 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
-        console.log(data);
+        console.log(data.token);
         this.$store.commit('setToken', data.token);
         this.$store.commit('setUsername', data.user.username);
+        saveAuthToCookie(data.token);
+        saveUserToCookie(data.user.username);
         this.$router.push('/main');
       } catch (error) {
         // 에러 핸들링할 코드
