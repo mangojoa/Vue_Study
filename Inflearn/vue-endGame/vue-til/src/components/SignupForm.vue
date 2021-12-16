@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { registerUser } from '@/api/index';
+import { registerUser } from '@/API/index';
 
 export default {
   data() {

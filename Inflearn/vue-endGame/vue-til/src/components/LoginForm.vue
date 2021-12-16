@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index';
+import { loginUser } from '@/API/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
